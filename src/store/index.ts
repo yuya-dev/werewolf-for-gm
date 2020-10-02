@@ -24,7 +24,7 @@ export default new Vuex.Store({
       state.players = players
     },
     load(state) {
-      const players = JSON.parse(localStorage.getItem('players') || '')
+      const players = JSON.parse(localStorage.getItem('players') || '[]')
       state.players = players
       state.isLoad = true
     },

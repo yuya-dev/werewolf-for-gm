@@ -7,7 +7,7 @@ module.exports = {
       },
     },
   },
-  publicPath: './',
+  publicPath: process.env.NODE_ENV === 'production' ? '/werewolf-for-gm/' : '/',
   assetsDir: '',
   outputDir: 'dist',
 }
