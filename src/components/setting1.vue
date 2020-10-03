@@ -38,7 +38,7 @@
       </template>
     </v-row>
     <backBtn to="/"></backBtn>
-    <addBtn :click="add"></addBtn>
+    <addBtn v-if="players.length > this.gameSetting.positions.length" :click="add"></addBtn>
   </v-container>
 </template>
 
@@ -58,7 +58,7 @@ export default Vue.extend({
     deleteBtn,
   },
   computed: {
-    ...mapState(['positionList', 'gameSetting']),
+    ...mapState(['positionList', 'gameSetting', 'players']),
     editablePosition(): Function {
       return (key: string) => {
         return this.positionList.filter((position: any) => {
@@ -85,7 +85,12 @@ export default Vue.extend({
       return wolf ? wolf.number : 0
     },
     isNext(): boolean {
-      if (this.totalNum < 3 || this.wolfNum === 0 || this.totalNum / 2 <= this.wolfNum) {
+      if (
+        this.totalNum < 3 ||
+        this.wolfNum === 0 ||
+        this.totalNum / 2 <= this.wolfNum ||
+        this.totalNum > this.players.length
+      ) {
         return false
       }
       return true

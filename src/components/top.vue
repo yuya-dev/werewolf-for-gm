@@ -5,10 +5,13 @@
         <v-img :src="require('../assets/logo.svg')" class="my-3" contain height="200" />
       </v-col>
 
-      <v-col class="mb-4">
+      <v-col v-if="isStart" class="mb-4">
         <v-btn block color="primary" x-large to="/setting-1">
           ゲーム開始
         </v-btn>
+      </v-col>
+      <v-col v-if="!isStart" class="mb-4">
+        ゲームを開始するためには3人以上のプレイヤーの登録が必要です。
       </v-col>
 
       <v-col class="mb-5" cols="12">
@@ -17,16 +20,22 @@
         </v-btn>
       </v-col>
     </v-row>
-    <span>v0.1.0</span>
+    <span>v0.1.1</span>
   </v-container>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default Vue.extend({
   name: 'top',
+  computed: {
+    ...mapState(['players']),
+    isStart() {
+      return this.players.length > 2
+    },
+  },
   mounted() {
     this.resetSetting()
   },
