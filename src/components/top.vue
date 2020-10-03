@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <v-col cols="12">
-        <v-img :src="require('../assets/logo.svg')" class="my-3" contain height="200" />
+        <v-img :src="require('../assets/wlogo.png')" class="my-3" contain height="200" />
       </v-col>
 
       <v-col v-if="isStart" class="mb-4">
