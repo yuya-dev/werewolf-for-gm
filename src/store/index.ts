@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import _ from 'lodash'
 
 Vue.use(Vuex)
 
@@ -17,6 +18,15 @@ export default new Vuex.Store({
       { key: 'teru', name: 'てるてる坊主' },
       { key: 'sharer', name: '共有者' },
     ],
+    defaultSetting: {
+      totalNumber: 0,
+      players: [],
+      positions: [],
+      firstDayFortune: false,
+      continuousGuard: false,
+      discussionTime: 5,
+    },
+    gameSetting: {},
   },
   mutations: {
     savePlayers(state, players) {
@@ -28,6 +38,12 @@ export default new Vuex.Store({
       state.players = players
       state.isLoad = true
     },
+    saveSetting(state, setting) {
+      state.gameSetting = setting
+    },
+    resetSetting(state) {
+      state.gameSetting = _.cloneDeep(state.defaultSetting)
+    },
   },
   actions: {
     load({ commit }) {
@@ -35,6 +51,12 @@ export default new Vuex.Store({
     },
     savePlayers({ commit }, players) {
       commit('savePlayers', players)
+    },
+    saveSetting({ commit }, setting) {
+      commit('saveSetting', setting)
+    },
+    resetSetting({ commit }) {
+      commit('resetSetting')
     },
   },
   modules: {},

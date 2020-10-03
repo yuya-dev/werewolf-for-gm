@@ -5,6 +5,7 @@ import Player from '../components/player.vue'
 import S1 from '../components/setting1.vue'
 import S2 from '../components/setting2.vue'
 import S3 from '../components/setting3.vue'
+import Night from '../components/night.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes: Array<RouteConfig> = [
     path: '/setting-3',
     name: 'setting3',
     component: S3,
+  },
+  {
+    path: '/night',
+    name: 'night',
+    component: Night,
   },
 ]
 

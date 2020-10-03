@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app color="accent" dark>
       <v-btn text to="/">人狼 for GM</v-btn>
       <v-spacer></v-spacer>
-      <v-btn text v-if="nextPage" @click="next">NEXT</v-btn>
+      <v-btn v-if="nextPage" outlined raised @click="next">NEXT</v-btn>
     </v-app-bar>
 
     <v-main v-if="isLoad">

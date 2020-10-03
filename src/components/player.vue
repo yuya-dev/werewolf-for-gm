@@ -7,43 +7,55 @@
       dense
       style="border-bottom: solid 1px"
     >
-      <v-col outlined :cols="8">
+      <v-col outlined :cols="8" align-center>
         {{ player }}
       </v-col>
-      <v-col class="mb-4" :cols="4">
-        <v-btn @click="editPlayers.splice(i, 1)">削除</v-btn>
+      <v-col :cols="4">
+        <deleteBtn
+          :click="
+            () => {
+              editPlayers.splice(i, 1)
+            }
+          "
+        >
+        </deleteBtn>
       </v-col>
     </v-row>
 
+    <backBtn to="/"></backBtn>
+    <addBtn
+      :click="
+        () => {
+          dialog = true
+        }
+      "
+    >
+    </addBtn>
     <v-dialog v-model="dialog">
-      <template v-slot:activator="{ on }">
-        <v-btn v-on="on" absolute bottom right dark fab color="indigo" style="bottom: 10px">
-          <v-icon dark>
-            mdi-plus
-          </v-icon>
-        </v-btn>
-      </template>
-      <v-list>
-        <v-list-item>
-          <v-form ref="form"> </v-form>
-          <v-text-field
-            label="player name"
-            v-model="player"
-            :rules="[required]"
-            maxlength="10"
-          ></v-text-field>
-        </v-list-item>
-        <v-list-item>
-          <v-btn block @click="submit">
-            追加
-          </v-btn>
-        </v-list-item>
-        <v-list-item>
-          <v-btn block @click="dialog = false">
+      <v-card>
+        <v-card-title>
+          <span class="headline">プレイヤー追加</span>
+        </v-card-title>
+        <v-card-text>
+          <v-form ref="form">
+            <v-text-field
+              label="player name"
+              v-model="player"
+              :rules="[required]"
+              maxlength="10"
+            ></v-text-field>
+          </v-form>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="blue darken-1" left text @click="dialog = false">
             閉じる
           </v-btn>
-        </v-list-item>
-      </v-list>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" text @click="submit">
+            追加
+          </v-btn>
+        </v-card-actions>
+      </v-card>
     </v-dialog>
   </v-container>
 </template>
@@ -51,9 +63,17 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
+import backBtn from './parts/btn/back.vue'
+import deleteBtn from './parts/btn/delete.vue'
+import addBtn from './parts/btn/add.vue'
 
 export default Vue.extend({
   name: 'player',
+  components: {
+    backBtn,
+    addBtn,
+    deleteBtn,
+  },
   computed: {
     ...mapState(['players']),
   },
