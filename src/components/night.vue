@@ -15,7 +15,7 @@
             v-model="fortuned"
             :items="livePlayers"
             item-text="name"
-            item-value="position"
+            item-value="name"
             return-object
           ></v-select>
         </v-card-text>
@@ -36,7 +36,7 @@
             v-model="raider"
             :items="humans"
             item-text="name"
-            item-value="position"
+            item-value="name"
             return-object
           ></v-select>
         </v-card-text>

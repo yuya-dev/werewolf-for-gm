@@ -85,12 +85,7 @@ export default Vue.extend({
       return wolf ? wolf.number : 0
     },
     isNext(): boolean {
-      if (
-        this.totalNum < 3 ||
-        this.wolfNum === 0 ||
-        this.totalNum / 2 <= this.wolfNum ||
-        this.totalNum > this.players.length
-      ) {
+      if (this.totalNum < 3 || this.wolfNum === 0 || this.totalNum / 2 <= this.wolfNum) {
         return false
       }
       return true

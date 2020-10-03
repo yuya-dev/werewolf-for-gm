@@ -15,7 +15,11 @@
         >
           <div>
             <p>{{ discussionTime }}</p>
-            <p>{{ isStart ? '中断' : '開始' }}</p>
+            <p>
+              <v-btn color="blue darken-1">
+                {{ isStart ? '中断' : '開始' }}
+              </v-btn>
+            </p>
           </div>
         </v-progress-circular>
       </v-col>
@@ -145,7 +149,7 @@ export default Vue.extend({
     if (this.gameSetting.date === 1) {
       this.deadPlayers.push('初日犠牲者')
     }
-    this.deadPlayers.concat(this.gameSetting.deadPlayers)
+    this.deadPlayers = this.deadPlayers.concat(this.gameSetting.deadPlayers)
     this.discussionTime = this.gameSetting.discussionTime * 60
     this.initialCall()
   },
