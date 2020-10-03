@@ -5,7 +5,7 @@
         プレイヤー設定
       </v-col>
       <template v-for="(player, i) in gameSetting.players">
-        <v-col cols="5" :key="`first-${i}`">
+        <v-col cols="6" :key="`first-${i}`">
           <v-select
             v-model="player.name"
             :items="editablePlayers(player.name)"
@@ -13,7 +13,7 @@
             outlined
           ></v-select>
         </v-col>
-        <v-col cols="4" :key="`second-${i}`">
+        <v-col cols="6" :key="`second-${i}`">
           <v-select
             v-model="player.position"
             :items="selectablePostions(player.position)"
@@ -22,15 +22,6 @@
             item-value="key"
             outlined
           ></v-select>
-        </v-col>
-        <v-col cols="2" :key="`third-${i}`">
-          <deleteBtn
-            :click="
-              () => {
-                gameSetting.players.splice(i, 1)
-              }
-            "
-          ></deleteBtn>
         </v-col>
       </template>
     </v-row>
@@ -42,14 +33,12 @@
 import Vue from 'vue'
 import { mapActions, mapState } from 'vuex'
 import backBtn from './parts/btn/back.vue'
-import deleteBtn from './parts/btn/delete.vue'
 import _ from 'lodash'
 
 export default Vue.extend({
   name: 'setting3',
   components: {
     backBtn,
-    deleteBtn,
   },
   computed: {
     ...mapState(['gameSetting', 'players', 'positionList']),
