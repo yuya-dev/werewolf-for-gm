@@ -17,6 +17,7 @@
         </v-btn>
       </v-col>
     </v-row>
+    <span>v0.1.0</span>
   </v-container>
 </template>
 
