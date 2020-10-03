@@ -6,12 +6,14 @@
       </v-col>
       <template v-for="(player, i) in gameSetting.players">
         <v-col cols="6" :key="`first-${i}`">
-          <v-select
+          <v-combobox
             v-model="player.name"
             :items="editablePlayers(player.name)"
             :label="`プレイヤー${i}`"
             outlined
-          ></v-select>
+            clearable
+            filled
+          ></v-combobox>
         </v-col>
         <v-col cols="6" :key="`second-${i}`">
           <v-select
@@ -96,7 +98,7 @@ export default Vue.extend({
     this.gameSetting.players = Array(this.gameSetting.totalNumber)
       .fill(null)
       .map(e => {
-        return { name: '', position: '' }
+        return { name: '', position: '', live: true, victory: false }
       })
   },
   methods: {

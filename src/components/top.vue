@@ -37,7 +37,7 @@ export default Vue.extend({
     },
   },
   mounted() {
-    this.resetSetting()
+    //this.resetSetting()
   },
   methods: {
     ...mapActions(['resetSetting']),
