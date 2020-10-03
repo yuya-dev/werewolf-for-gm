@@ -20,7 +20,7 @@
         </v-btn>
       </v-col>
     </v-row>
-    <span>v0.1.1</span>
+    <span>v0.1.2</span>
   </v-container>
 </template>
 
